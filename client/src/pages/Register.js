@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { HideLoading, ShowLoading } from "../redux/alertsSlice";
+import toast from "react-hot-toast";
 
 function Register() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   //user state
   const [user, setUser] = useState({
     name: "",
@@ -13,13 +18,18 @@ function Register() {
   //register function
   const register = async () => {
     try {
+      dispatch(ShowLoading());
       const response = await axios.post("/api/users/register", user);
+      dispatch(HideLoading());
       if (response.data.success) {
-        alert("user registered successfully");
+        toast.success(response.data.message);
+        navigate("/login");
       } else {
-        alert(response.data.message);
+        toast.error(response.data.message);
       }
     } catch (error) {
+      toast.error("Something went wrong");
+      dispatch(HideLoading());
       console.log(error);
     }
   };

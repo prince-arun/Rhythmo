@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import { HideLoading, ShowLoading } from "../redux/alertsSlice";
+import { useDispatch } from "react-redux";
+import toast from "react-hot-toast";
 
 function Login() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   //user state
   const [user, setUser] = useState({
@@ -13,14 +17,19 @@ function Login() {
   //login function
   const login = async () => {
     try {
+      dispatch(ShowLoading());
       const response = await axios.post("/api/users/login", user);
+      dispatch(HideLoading());
       if (response.data.success) {
+        toast.success(response.data.message);
         localStorage.setItem("token", response.data.data);
         navigate("/");
       } else {
-        alert(response.data.message);
+        toast.error(response.data.message);
       }
     } catch (error) {
+      toast.error("Something went wrong");
+      dispatch(HideLoading());
       console.log(error);
     }
   };

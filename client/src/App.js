@@ -5,10 +5,16 @@ import Register from "./pages/Register";
 import Home from "./pages/Home";
 import ProtectedRoute from "./components/ProtectedRoute";
 import PublicRoute from "./components/PublicRoute";
+import { useSelector } from "react-redux";
+import Spinner from "./components/Spinner";
+import { Toaster } from "react-hot-toast";
 
 function App() {
+  const { loading } = useSelector((state) => state.alerts);
   return (
     <div className="App">
+      {loading && <Spinner />}
+      <Toaster position="top-center" reverseOrder={false} />
       <Router>
         <Routes>
           <Route
