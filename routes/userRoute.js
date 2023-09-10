@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const User = require("../models/userModel");
 const jwt = require("jsonwebtoken");
+const authMiddleware = require("../middlewares/authMiddleware");
 
 //creating post router for registration
 router.post("/register", async (req, res) => {
@@ -59,6 +60,21 @@ router.post("/login", async (req, res) => {
         .status(200)
         .send({ message: "Password is incorrect", success: false });
     }
+  } catch (error) {
+    return res.status(500).send({ message: error.message, success: false });
+  }
+});
+
+//verifying login using middleware
+router.post("/get-user-data", authMiddleware, async (req, res) => {
+  try {
+    const user = await User.findById(req.body.userId);
+    //user.password = undefined;
+    return res.status(200).send({
+      message: "User data fetched successfully",
+      success: true,
+      data: user,
+    });
   } catch (error) {
     return res.status(500).send({ message: error.message, success: false });
   }
