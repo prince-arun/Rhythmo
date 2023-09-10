@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 
 function Register() {
   //user state
@@ -50,6 +51,9 @@ function Register() {
         <button className="primary" onClick={register}>
           Register
         </button>
+        <Link to="/login" className="text-secondary underline">
+          Already Registered ? Click Here To Login
+        </Link>
       </div>
     </div>
   );
