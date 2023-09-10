@@ -69,7 +69,7 @@ router.post("/login", async (req, res) => {
 router.post("/get-user-data", authMiddleware, async (req, res) => {
   try {
     const user = await User.findById(req.body.userId);
-    //user.password = undefined;
+    user.password = undefined;
     return res.status(200).send({
       message: "User data fetched successfully",
       success: true,
