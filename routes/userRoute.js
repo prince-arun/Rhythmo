@@ -3,20 +3,16 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const User = require("../models/userModel");
 const jwt = require("jsonwebtoken");
+const authMiddleWare = require("../middlewares/authMiddleware");
 const authMiddleware = require("../middlewares/authMiddleware");
 
-//creating post router for registration
 router.post("/register", async (req, res) => {
   try {
     const password = req.body.password;
-    //bcrypt - native functions--------
     const salt = await bcrypt.genSaltSync(10);
     const hashedPassword = await bcrypt.hashSync(password, salt);
-    //---------------------------------
     req.body.password = hashedPassword;
     const user = new User(req.body);
-
-    //finding if the user already exists
     const existingUser = await User.findOne({ email: req.body.email });
     if (existingUser) {
       return res
@@ -33,7 +29,6 @@ router.post("/register", async (req, res) => {
   }
 });
 
-//creating post router for login
 router.post("/login", async (req, res) => {
   try {
     const user = await User.findOne({ email: req.body.email });
@@ -65,7 +60,6 @@ router.post("/login", async (req, res) => {
   }
 });
 
-//verifying login using middleware
 router.post("/get-user-data", authMiddleware, async (req, res) => {
   try {
     const user = await User.findById(req.body.userId);
