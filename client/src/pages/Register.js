@@ -8,14 +8,11 @@ import toast from "react-hot-toast";
 function Register() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  //user state
   const [user, setUser] = useState({
     name: "",
     email: "",
     password: "",
   });
-
-  //register function
   const register = async () => {
     try {
       dispatch(ShowLoading());
@@ -34,11 +31,16 @@ function Register() {
     }
   };
   return (
-    <div className="min-h-screen flex justify-center items-center">
-      <div className="flex flex-col gap-5 w-96 p-5 shadow border border-gray-300">
-        <h1 className="text-3xl font-bold text-secondary">
-          Welcome to Rhythmo
-        </h1>
+    <div className="min-h-screen flex items-center justify-center">
+      <div>
+        <img
+          className="h-[500px]"
+          src="https://img.freepik.com/premium-photo/3d-rendering-3d-illustration-red-black-music-note-icon-isolated-white-background-song-melody-tune-symbol-concept_640106-443.jpg?w=2000"
+          alt=""
+        />
+      </div>
+      <div className="flex flex-col gap-5 w-96 p-5  ">
+        <h1 className="text-3xl font-bold text-secondary">Welcome </h1>
         <hr />
         <input
           type="text"
@@ -47,7 +49,7 @@ function Register() {
           onChange={(e) => setUser({ ...user, name: e.target.value })}
         />
         <input
-          type="email"
+          type="text"
           placeholder="Email"
           value={user.email}
           onChange={(e) => setUser({ ...user, email: e.target.value })}
@@ -58,7 +60,7 @@ function Register() {
           value={user.password}
           onChange={(e) => setUser({ ...user, password: e.target.value })}
         />
-        <button className="primary" onClick={register}>
+        <button className="primary bg-primary" onClick={register}>
           Register
         </button>
         <Link to="/login" className="text-secondary underline">
