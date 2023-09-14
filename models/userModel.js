@@ -1,6 +1,4 @@
 const mongoose = require("mongoose");
-
-//creating schema for registration-api
 const userSchema = new mongoose.Schema(
   {
     name: {
@@ -19,9 +17,12 @@ const userSchema = new mongoose.Schema(
       type: Array,
       required: false,
     },
+    isAdmin: {
+      type: Boolean,
+      required: false,
+      default: true,
+    },
   },
   { timestamps: true }
 );
-
-//exporting model
 module.exports = mongoose.model("user", userSchema);
