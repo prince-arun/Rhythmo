@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import spotify from "../assets/spotify.png";
 import { useSelector, useDispatch } from "react-redux";
 import {
   SetCurrentSong,
@@ -69,13 +70,9 @@ function Player() {
 
   return (
     <div className="absolute bottom-0 left-0 right-0 p-5 shadow-lg bg-white">
-      <div className="flex justify-between items-center border p-5 border-green-500 rounded shadow-xl">
+      <div className="flex justify-between items-center border bg-green-100 p-5 border-green-500 rounded shadow-xl">
         <div className="flex items-center gap-2 w-96">
-          <img
-            className="h-20 w-32"
-            src="https://www.pngimages.pics/images/quotes/english/general/music-symbol-png-clipart-52650-297684.png"
-            alt=""
-          />
+          <img className="h-20 w-30" src={spotify} alt="" />
           <div>
             <h1 className="text-active text-2xl">{currentSong?.title}</h1>
             <h1 className="text-secondary">
@@ -129,7 +126,7 @@ function Player() {
             </h1>
             <input
               type="range"
-              className="p-0 w-full"
+              className="p-0 w-full bg-blue-600"
               min={0}
               max={Number(currentSong?.duration) * 60}
               value={currentTime}
@@ -152,7 +149,7 @@ function Player() {
           ></i>
           <input
             type="range"
-            className="p-0"
+            className="p-0 volume"
             min={0}
             max={1}
             step={0.1}

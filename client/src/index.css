@@ -49,3 +49,7 @@ input[type="file"] {
 .sc-bczRLJ {
   border: none !important;
 }
+
+.volume {
+  background-color: blue;
+}

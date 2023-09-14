@@ -15,7 +15,6 @@ export const fetchAllSongs = async () => {
     if (response.status !== 200) {
       throw new Error("Failed to fetch songs");
     }
-    console.log(response);
 
     return response.data.data; // Assuming the API response contains the songs data
   } catch (error) {

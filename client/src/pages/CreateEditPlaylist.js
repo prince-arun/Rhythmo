@@ -112,7 +112,7 @@ function CreateEditPlaylist() {
   }, []);
 
   return (
-    <div>
+    <div className="overflow-y-scroll h-[60vh] p-3">
       <div className="flex items-center gap-5">
         <i
           class="ri-arrow-left-line text-3xl"
@@ -151,7 +151,7 @@ function CreateEditPlaylist() {
 
       <h1 className="my-5 text-2xl">Selected Songs - {selectedSongs.length}</h1>
 
-      <div className="grid grid-cols-3 gap-3">
+      <div className="grid grid-cols-3 gap-3 ">
         {allSongs.map((song, index) => {
           const isSelected = selectedSongs.find((s) => s._id === song._id);
           return (

@@ -65,14 +65,13 @@ function Playlists() {
     }
   }, [selectedPlaylist, allSongs]);
 
-  console.log(allPlylists);
   let uid = uuidv4();
   return (
-    <div>
+    <div className="bg-gray-50">
       <div className="flex justify-between w-full">
-        <h1 className="text-secondary text-2xl">Your Playlists</h1>
+        <h1 className="text-green-500 text-2xl">Your Playlists</h1>
         <h1
-          className="underline cursor-pointer text-xl text-secondary"
+          className="underline text-green-500 cursor-pointer text-xl "
           onClick={() => {
             navigate("/create-edit-playlist");
           }}

@@ -23,7 +23,6 @@ function SongsList() {
       try {
         // Fetch all songs using the API function
         const songs = await fetchAllSongs();
-        console.log("Fetched songs:", songs);
 
         // Dispatch the fetched songs to update the Redux state
         await dispatch(SetAllSongs(songs));
@@ -62,7 +61,7 @@ function SongsList() {
   }, [selectedPlaylist, searchKey]);
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-3 bg-gray-50">
       <div className="pl-3 pr-6">
         <input
           type="text"
