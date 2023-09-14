@@ -23,7 +23,6 @@ function Login() {
         navigate("/");
       } else {
         toast.error(response.data.message);
-        alert(response.data.message);
       }
     } catch (error) {
       toast.error("Something went wrong");
