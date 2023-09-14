@@ -1,14 +1,22 @@
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import React from "react";
+import SongsList from "../components/SongsList";
+import Playlists from "../components/Playlists";
+import Player from "../components/Player";
 
-const Home = () => {
-  const { user } = useSelector((state) => state.user);
+function Home() {
   return (
-    <div className="flex items-center justify-center h-screen flex-col">
-      <h1 className="text-5xl">Home</h1>
-      <h1>{user?.name}</h1>
-    </div>
+    <>
+      <div className="flex gap-5">
+        <div className="w-1/2">
+          <SongsList />
+        </div>
+        <div className="w-1/2">
+          <Playlists />
+        </div>
+      </div>
+      <Player />
+    </>
   );
-};
+}
 
 export default Home;
