@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 function AdminHome() {
-  const [selectedSongForEdit, setSelectedSongForEdit] = useState(null);
-  const { allSongs, user } = useSelector((state) => state.user);
+  // const [selectedSongForEdit, setSelectedSongForEdit] = useState(null);
+  const { allSongs } = useSelector((state) => state.user);
   const navigate = useNavigate();
 
   // useEffect(() => {

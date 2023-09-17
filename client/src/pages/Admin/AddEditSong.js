@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 import { SetAllSongs } from "../../redux/userSlice";
 
 function AddEditSong() {
-  const { allSongs, user } = useSelector((state) => state.user);
+  const { allSongs } = useSelector((state) => state.user);
   const urlParams = new URLSearchParams(window.location.search);
   const songId = urlParams.get("id");
   const dispatch = useDispatch();

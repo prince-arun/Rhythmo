@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { HideLoading, ShowLoading } from "../redux/alertsSlice";
-import { v4 as uuidv4 } from "uuid";
+// import { v4 as uuidv4 } from "uuid";
 
 import {
   SetSelectedPlaylist,
@@ -65,7 +65,7 @@ function Playlists() {
     }
   }, [selectedPlaylist, allSongs]);
 
-  let uid = uuidv4();
+  // let uid = uuidv4();
   return (
     <div className="bg-gray-50">
       <div className="flex justify-between w-full">

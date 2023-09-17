@@ -109,7 +109,7 @@ function CreateEditPlaylist() {
       setName(selectedPlaylistForEdit.name);
       setSelectedSongs(selectedPlaylistForEdit.songs);
     }
-  }, []);
+  }, [selectedPlaylistForEdit]);
 
   return (
     <div className="overflow-y-scroll h-[60vh] p-3">

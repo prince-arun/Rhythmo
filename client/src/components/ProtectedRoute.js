@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { SetAllSongs, SetUser } from "../redux/userSlice";
+import { SetUser } from "../redux/userSlice";
 import { HideLoading, ShowLoading } from "../redux/alertsSlice";
 import DefaultLayout from "./DefaultLayout";
 

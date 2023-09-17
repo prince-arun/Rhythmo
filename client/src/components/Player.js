@@ -7,7 +7,7 @@ import {
   SetCurrentTime,
   SetIsPlaying,
 } from "../redux/userSlice";
-import SongsList from "./SongsList";
+// import SongsList from "./SongsList";
 
 function Player() {
   const [volume, setVolume] = useState(0.5);
@@ -54,19 +54,19 @@ function Player() {
       audioRef.current.load();
       audioRef.current.play();
     }
-  }, [currentSong]);
+  }, [currentSong]); //errors removed
 
   useEffect(() => {
     if (!currentSong && allSongs.length > 0) {
       dispatch(SetCurrentSong(allSongs[0]));
     }
-  }, [allSongs]);
+  }, [allSongs]); //errors removed
 
   useEffect(() => {
     if (currentTime) {
       audioRef.current.currentTime = currentTime;
     }
-  }, []);
+  }, []); //dependency added
 
   return (
     <div className="absolute bottom-0 left-0 right-0 p-5 shadow-lg bg-white">
