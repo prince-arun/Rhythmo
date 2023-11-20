@@ -21,3 +21,5 @@ export const fetchAllSongs = async () => {
     throw error;
   }
 };
+
+//lint errors fixed
