@@ -10,6 +10,7 @@ const userRoute = require("./routes/userRoute");
 const songsRoute = require("./routes/songsRoute");
 const adminRoute = require("./routes/adminRoute");
 
+//Changed user routes
 app.use("/api/users", userRoute);
 app.use("/api/songs", songsRoute);
 app.use("/api/admin", adminRoute);
